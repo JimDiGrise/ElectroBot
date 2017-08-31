@@ -1,0 +1,10 @@
+{
+    "require": {
+        "paquettg/php-html-parser": "^1.7",
+        "sybio/gif-creator": "^1.0",
+        "nicolab/php-ftp-client": "^1.4",
+        "guzzlehttp/guzzle": "~6.0",
+        "monolog/monolog": "^1.23",
+        "irazasyed/telegram-bot-sdk": "2.0"
+    }
+}
