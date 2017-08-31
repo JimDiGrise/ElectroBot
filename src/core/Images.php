@@ -25,7 +25,19 @@
             $dom->load($this->sourceImage);
             return $dom->find('.imgresize');
         }
-       
+        public function getAllImages() {
+            $parsedHtml = $this->parseSource();
+            $this->saveImages($parsedHtml);
+        }
+        private function saveImage($url) {
+            $imagePath = __DIR__ . "/../../img/" . basename($url, ".jpg") . ".jpg";
+            try {
+                return file_put_contents($imagePath, file_get_contents($this->sourceImage .  $url)) ? TRUE : FALSE;
+            } catch(Exception $e) {
+                $this->logger->error("Exception: " . $e);
+            }
+
+        }
 
     }
     
