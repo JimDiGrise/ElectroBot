@@ -51,7 +51,14 @@
         public function getImagesList() {
             return $this->images;
         }
-        
+        private function saveImages($htmlDom) {
+            foreach($htmlDom as $image) {
+                $this->saveImage($image->getAttribute('src'));
+                $this->logger->info("Save image: " . $image->getAttribute('src'));
+                array_push($this->images, __DIR__ . "/../../img/" . basename($image->getAttribute('src'), ".jpg") . ".jpg");
+                
+            }
+        }
 
     }
     
