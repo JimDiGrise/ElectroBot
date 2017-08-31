@@ -38,6 +38,16 @@
             }
 
         }
+        public function getImagesDates() {
+            $dates = array();
+            foreach($this->images as $image) {
+                $temp = basename($image, ".jpg");
+                $date = new DateTime(substr($temp, 0, 4) . "-" . substr($temp, 4, 2) . "-" . substr($temp, 6, 2));
+                $date->setTime( substr($temp, 9, 2), substr($temp, 11, 2) );
+                array_push($dates, $date);
+            }
+            return $dates;
+        }
 
     }
     
