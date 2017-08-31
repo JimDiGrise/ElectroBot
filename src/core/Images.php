@@ -48,6 +48,10 @@
             }
             return $dates;
         }
+        public function getImagesList() {
+            return $this->images;
+        }
+        
 
     }
     
