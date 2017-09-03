@@ -30,6 +30,13 @@
             return $responseBody->result[$length - 1];
             
         }
+        public function confirmMessage($offset) {
+            $response = $this->httpClient->request('POST', 'getUpdates', [
+                'json' => [
+                    'offset' => $this->offset + 1
+                ]
+            ]);    
+        }
        
     }
 ?>
