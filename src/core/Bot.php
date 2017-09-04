@@ -52,6 +52,21 @@
             ]);
             return $response->getStatusCode();
         }
+        public function sendPhoto($chatId, $path ) { 
+            $res = $this->httpClient->request('POST', 'sendPhoto', [
+			'multipart' => [
+                [
+                    'name'     => 'photo',
+                    'contents' => fopen($path, 'r'),
+                ],
+                [
+                    'name'     => 'chat_id',
+                    'contents' => $chatId,
+                ],
+            ]    
+            ]);	
+            return $res->getStatusCode();
+        }
        
     }
 ?>
