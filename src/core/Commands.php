@@ -18,7 +18,18 @@
             $this->images = new Images();
            
         }
-        
-        
+        public function handleCommand($command) {
+            if($command == "/start") {
+                $this->handleStart();       
+            } else if($command == "/gif" || $command == "Гифку") {
+                $this->handleGif();    
+            } else if($command == "/photo" || $command == "Фотографию") {
+                $this->handlePhoto();    
+            } else if(preg_match("/(\d+).(\d+)\s{1}(\d+):(\d+)/", $command)) {
+                $this->handleDate($command);   
+            } else {
+                $this->handleWrong();
+            }
+        }
     }
 ?>
