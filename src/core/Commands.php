@@ -81,5 +81,10 @@
             $this->bot->sendGif($this->lastChatId,  __DIR__. "/../gif/earth.gif" ); 
             $this->bot->sendMessage($this->lastChatId, "Эта анимация была создана из фотографий отснятых за текущие сутки. ", $this->menukeyboard); 
         }
+        public function clearDirectory($url) {
+            foreach(glob($url . "*") as $filename) {
+                unlink($filename);
+            }
+        }
     }
 ?>
