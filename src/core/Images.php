@@ -59,6 +59,12 @@
                 
             }
         }
+        public function getImage($date) 
+        {
+            $path = __DIR__ . "/../../img/" . $date->format("Ymd-Hi") . ".jpg";
+            $this->logger->info("Get Image " . $path);
+            return file_exists($path) ? $path : FALSE; 
+        }
 
     }
     
