@@ -39,5 +39,23 @@
             $this->bot->sendMessage($this->lastChatId, "Вы можете сгенерировать gif анимацию или получить фотографию по времени, за текущие сутки. Электро-Л производит съемку и выгрузку фотографий каждые пол часа.", $this->menukeyboard);
             $this->bot->sendMessage($this->lastChatId, "Список доступных команд: \n\n /start Включение бота \n /gif Сгенерировать gif анимацию \n /photo Получить фотографию по времени \n", $this->menukeyboard);
         }
+        public function handlePhoto() {
+            $this->clearDirectory("img/");
+            $this->clearDirectory("gif/");
+            $this->bot->sendChatAction($this->lastChatId, "upload_photo" );
+            $this->images->getAllImages();
+            $imagesDates = $this->images->getImagesDates();
+            $firstDay = array();
+            foreach($imagesDates as $image) {
+                array_push($firstDay, $image->format("m.d H:i"));
+            }
+            $datesKeyboard = array(
+                'keyboard' => array_chunk($firstDay, 4),
+                'resize_keyboard' => true,
+                'one_time_keyboard' => true
+                
+            );
+            $this->bot->sendMessage($this->lastChatId, "Выберите дату и время: ", $datesKeyboard);        
+        }
     }
 ?>
