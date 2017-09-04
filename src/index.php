@@ -9,7 +9,7 @@
     while(1) {
         sleep(3);
         $cmd = new Commands($bot);
-        if(empty($bot->getLastMessage()) == FALSE) {
+        if(!empty($bot->getLastMessage())) {
             $lastMessage = $bot->getLastMessage();
             $cmd->setLastChatId($bot->lastChatId);
             $bot->confirmMessage($bot->lastChatId);

@@ -28,7 +28,6 @@
 
             $this->offset = (int)$responseBody->result[$length - 1]->update_id;
             $this->lastChatId = $responseBody->result[$length - 1]->message->chat->id;
-           echo $this->lastChatId;
             
             return $responseBody->result[$length - 1];
             
@@ -88,7 +87,6 @@
             
         }
         public function sendChatAction($chatId, $action) {
-            echo $chatId;
             $res = $this->httpClient->request('POST', 'sendChatAction', [
                 'json' => [ 'chat_id' => $chatId, 
                             'action' => $action, 
