@@ -1,4 +1,8 @@
 <?php
+    require "../vendor/autoload.php";
+
+    require "core/Gif.php";
+    require "core/Images.php";
     class Commands {
         private $bot;
         private $images;
@@ -85,6 +89,9 @@
             foreach(glob($url . "*") as $filename) {
                 unlink($filename);
             }
+        }
+        public function setLastChatId($chatId) {
+            $this->lastChatId = $chatId;
         }
     }
 ?>
