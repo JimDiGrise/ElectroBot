@@ -67,6 +67,23 @@
             ]);	
             return $res->getStatusCode();
         }
+        public function sendGif($chatId, $path) {
+            $res = $this->httpClient->request('POST', 'sendDocument', [
+			'multipart' => [
+                [
+                    'name'     => 'document',
+                    'contents' => fopen($path, 'r'),
+                ],
+                [
+                    'name'     => 'chat_id',
+                    'contents' => $chatId,
+                ],
+            ]    
+
+            ]);	
+            return $res->getStatusCode();
+            
+        }
        
     }
 ?>
