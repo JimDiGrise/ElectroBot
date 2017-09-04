@@ -37,6 +37,9 @@
                 ]
             ]);    
         }
+        public function getChatId() {
+            return $this->lastChatId;
+        }
        
     }
 ?>
