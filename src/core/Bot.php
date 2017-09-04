@@ -40,6 +40,9 @@
         public function getChatId() {
             return $this->lastChatId;
         }
+        public function getLastOffset() {
+            return $this->offset;
+        }
        
     }
 ?>
