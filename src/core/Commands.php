@@ -67,7 +67,7 @@
             $firstDay = array();
             $currentDate = new DateTime("2017-". preg_split("/\./", $date[0])[0] . "-" . preg_split("/\./", $date[0])[1]);
             $currentDate->setTime(preg_split("/:/", $date[1])[0], preg_split("/:/", $date[1])[1]);
-            $this->bot->sendMessage($this->lastChatId, "Фотография сделанна в " . $currentDate->format("d.m H:i") . ":" , $this->menukeyboard); 
+            $this->bot->sendMessage($this->lastChatId, "Фотография сделана в " . $currentDate->format("d.m H:i") . ":" , $this->menukeyboard); 
             $imagePath = $this->images->getImage($currentDate);
             echo ( "Date " . $imagePath) ;
             $this->bot->sendPhoto($this->lastChatId, $imagePath);
