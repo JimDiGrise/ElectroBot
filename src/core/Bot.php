@@ -84,6 +84,17 @@
             return $res->getStatusCode();
             
         }
+        public function sendChatAction($chatId, $action) {
+            echo $chatId;
+            $res = $this->httpClient->request('POST', 'sendChatAction', [
+                'json' => [ 'chat_id' => $chatId, 
+                            'action' => $action, 
+                ]
+
+            ]);	
+            return $res->getStatusCode();
+            
+        }
        
     }
 ?>
