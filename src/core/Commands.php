@@ -31,5 +31,8 @@
                 $this->handleWrong();
             }
         }
+        public function handleWrong() {
+            $this->bot->sendMessage($this->lastChatId, "Команда не найдена", $this->menukeyboard);    
+       }
     }
 ?>
