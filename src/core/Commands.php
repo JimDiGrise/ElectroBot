@@ -33,6 +33,11 @@
         }
         public function handleWrong() {
             $this->bot->sendMessage($this->lastChatId, "Команда не найдена", $this->menukeyboard);    
-       }
+        }
+        public function handleStart() {
+            $this->bot->sendMessage($this->lastChatId, "Electro Bot - Это бот который позволяет получать фотографии нашей планеты со спутника Электро-Л. \nСайт: electro.ntsomz.ru/", $this->menukeyboard);
+            $this->bot->sendMessage($this->lastChatId, "Вы можете сгенерировать gif анимацию или получить фотографию по времени, за текущие сутки. Электро-Л производит съемку и выгрузку фотографий каждые пол часа.", $this->menukeyboard);
+            $this->bot->sendMessage($this->lastChatId, "Список доступных команд: \n\n /start Включение бота \n /gif Сгенерировать gif анимацию \n /photo Получить фотографию по времени \n", $this->menukeyboard);
+        }
     }
 ?>
