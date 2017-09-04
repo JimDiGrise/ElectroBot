@@ -43,6 +43,15 @@
         public function getLastOffset() {
             return $this->offset;
         }
+        public function sendMessage($chatId, $message, $keyboard ) { 
+            $response = $this->httpClient->request('POST', 'sendMessage', [
+			'json' => ['chat_id' => $chatId, 
+						'text' => $message, 
+                        'reply_markup' => json_encode($keyboard)
+                    ]
+            ]);
+            return $response->getStatusCode();
+        }
        
     }
 ?>
