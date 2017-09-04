@@ -1,4 +1,10 @@
 <?php
+    require "/../../vendor/autoload.php";
+
+    require "core/Gif.php";
+    require "core/Images.php";
+
+
     class Commands {
         private $bot;
         private $images;
@@ -68,6 +74,26 @@
             echo ( "Date " . $imagePath) ;
             $this->bot->sendPhoto($this->lastChatId, $imagePath);
       
+        }
+        public function handleGif() {
+            $this->clearDirectory(__DIR__  . "/../img/");
+            $this->clearDirectory(__DIR__ . "/../gif/");
+            $this->bot->sendChatAction($this->lastChatId, "upload_photo" );
+            $this->images->getAllImages();
+            $imagesList = $this->images->getImagesList();
+            print_R($imagesList);
+            $gif = new Gif($imagesList);
+            $gif->createGif();
+            $this->bot->sendGif($this->lastChatId,  __DIR__. "/../gif/earth.gif" ); 
+            $this->bot->sendMessage($this->lastChatId, "Эта анимация была создана из фотографий отснятых за текущие сутки. ", $this->menukeyboard); 
+        }
+        public function clearDirectory($url) {
+            foreach(glob($url . "*") as $filename) {
+                unlink($filename);
+            }
+        }
+        public function setLastChatId($chatId) {
+            $this->lastChatId = $chatId;
         }
     }
 ?>
